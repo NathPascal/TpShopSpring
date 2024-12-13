@@ -1,14 +1,20 @@
 package fr.fms.business;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import fr.fms.dao.ArticleRepository;
 import fr.fms.dao.CategoryRepository;
 import fr.fms.entities.Article;
 import fr.fms.entities.Category;
-import org.springframework.beans.factory.annotation.Autowired;
 
 
+@Service
 public class IBusinessImpl {
 	
 	@Autowired
@@ -38,6 +44,16 @@ public class IBusinessImpl {
 	
 	articleRepository.save(new Article("OnePLus","9 Pro",200, enceinte));
 	}
+	
+	public List<Article> showAllArticlesWithoutPagination() {
+        return articleRepository.findAll();
+    }
+	
+	public Page<Article> showAllArticlesWithPagination(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return articleRepository.findAll(pageable);
+	}
+	
 
 
 }

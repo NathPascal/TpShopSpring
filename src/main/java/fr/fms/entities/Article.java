@@ -31,6 +31,26 @@ public class Article implements Serializable{
 		this.category = category;
 	}
 	
+	 public Long getId() {
+	        return id;
+	    }
+
+	    public String getBrand() {
+	        return brand;
+	    }
+
+	    public String getDescription() {
+	        return description;
+	    }
+
+	    public double getPrice() {
+	        return price;
+	    }
+
+	    public Category getCategory() {
+	        return category;
+	    }
+	
 	@Override
     public String toString() {
        return "Article [id=" + id + ", brand=" + brand + ", description=" + description + ", price=" + price + ", category=" + category + "]";
